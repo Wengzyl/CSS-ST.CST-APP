@@ -68,7 +68,7 @@ function startQuiz() {
 
 document.addEventListener("DOMContentLoaded", () => {
     const introVideo = document.getElementById("intro-video");
-    introVideo.muted = false;
+    introVideo.muted = true;
 });
 
 function showQuestion() {
