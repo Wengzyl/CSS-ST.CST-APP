@@ -12,7 +12,7 @@ const questions = [
     },
     {
         question: "Which output device generates sound?",
-        image: "images/speaker.jpg",
+        image: "speaker.jpg",
         wrongImage: "images/wrong.jpg",
         answers: [
             { text: "Speaker", correct: true },
@@ -23,7 +23,7 @@ const questions = [
     },
     {
         question: "Which device allows a computer to run briefly after power loss?",
-        image: "images/ups.jpg",
+        image: "ups.jpg",
         wrongImage: "images/wrong.jpg",
         answers: [
             { text: "UPS", correct: true },
@@ -34,7 +34,7 @@ const questions = [
     },
     {
         question: "Which component is considered the brain of the computer?",
-        image: "images/cpu.jpg",
+        image: "cpu.jpg",
         wrongImage: "images/wrong.jpg",
         answers: [
             { text: "Hard Drive", correct: false },
