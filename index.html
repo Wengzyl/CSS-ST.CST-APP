@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz App - Easy Tutorials</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .quiz {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .quiz-image {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    .quiz-content {
+      flex: 1;
+      min-width: 250px;
+    }
+    #answer-buttons {
+      margin-top: 10px;
+    }
+    .intro-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background: black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      z-index: 1000;
+    }
+    .intro-container video {
+      width: 100%;
+      height: 100vh;
+      object-fit: cover;
+    }
+    .start-btn {
+      display: none;
+      background: #FFD700;
+      color: black;
+      font-size: 20px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  </style>
+</head>
+<body>
+  <div class="intro-container" id="intro-container">
+    <video id="intro-video" src="video.mp4" autoplay playsinline></video>
+    <audio id="intro-music" src="music.mp3" autoplay loop playsinline></audio>
+    <button class="start-btn" id="start-btn">Start</button>
+  </div>
+  
+  <div class="app" id="quiz-app" style="display: none;">
+    <h1>CSS Primal Quiz</h1>
+    <div class="quiz">
+      <img id="question-image" src="images/default.jpg" class="quiz-image">
+      <div class="quiz-content">
+        <h2 id="question">Question goes here</h2>
+        <div id="answer-buttons"></div>
+        <button id="next-btn">Next</button>
+      </div>
+    </div>
+  </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const introVideo = document.getElementById("intro-video");
+      const introMusic = document.getElementById("intro-music");
+      const introContainer = document.getElementById("intro-container");
+      const startBtn = document.getElementById("start-btn");
+      const quizApp = document.getElementById("quiz-app");
+      
+      // Play background music when video starts
+      introVideo.addEventListener("play", () => {
+        introMusic.play();
+      });
+
+      // Show start button at 11 seconds
+      introVideo.addEventListener("timeupdate", () => {
+        if (introVideo.currentTime >= 11) {
+          startBtn.style.display = "block";
+        }
+      });
+      
+      // Hide video and music when finished
+      introVideo.onended = () => {
+        introVideo.style.display = "none";
+        introMusic.pause();
+      };
+      
+      startBtn.addEventListener("click", () => {
+        introContainer.style.display = "none";
+        quizApp.style.display = "block";
+        introMusic.pause();
+      });
+    });
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>
